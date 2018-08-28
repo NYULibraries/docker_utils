@@ -1,0 +1,12 @@
+version: "3.2"
+services:
+
+  wget:
+    image: nyulibraries/wget:latest
+    build: wget/
+  circleci_docker:
+    image: nyulibraries/circleci_docker:18.06.1-ce-git
+    build:
+      context: circleci_docker/
+      args:
+        DOCKER_VERSION: 18.06.1-ce-git
