@@ -2,11 +2,15 @@ version: "3.2"
 services:
 
   circleci_docker:
-    image: nyulibraries/circleci_docker:18.06.1-ce-git
+    image: nyulibraries/circleci_docker:docker-${DOCKER_VERSION}-docker-compose-${DOCKER_COMPOSE_VERSION}
     build:
       context: circleci_docker/
       args:
-        DOCKER_VERSION: 18.06.1-ce-git
+        DOCKER_VERSION: ${DOCKER_VERSION}
+        DOCKER_COMPOSE_VERSION: ${DOCKER_COMPOSE_VERSION}
+    environment:
+      DOCKER_VERSION: 18.06.1-ce-git
+      DOCKER_COMPOSE_VERSION: 1.22.0
 
   kubectl_aws_cli:
     image: nyulibraries/kubectl_aws_cli
