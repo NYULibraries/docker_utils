@@ -1,7 +1,8 @@
-ARG DOCKER_VERSION=18.06.1-ce-git
-ARG DOCKER_COMPOSE_VERSION=1.22.0
+ARG DOCKER_VERSION=${DOCKER_VERSION}
 
 FROM docker:${DOCKER_VERSION}
+
+ARG DOCKER_COMPOSE_VERSION=${DOCKER_COMPOSE_VERSION}
 
 # install rsync, docker-compose, aws-cli
 RUN apk add --no-cache python3 rsync \

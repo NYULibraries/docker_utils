@@ -1,12 +1,14 @@
 version: "3.2"
 services:
 
+  # Example build command: DOCKER_VERSION=18.06.1-ce-git DOCKER_COMPOSE_VERSION=1.22.0 docker-compose build circleci_docker
   circleci_docker:
-    image: nyulibraries/circleci_docker:18.06.1-ce-git
+    image: nyulibraries/circleci_docker:${DOCKER_VERSION}-compose-${DOCKER_COMPOSE_VERSION}
     build:
       context: circleci_docker/
       args:
-        DOCKER_VERSION: 18.06.1-ce-git
+        DOCKER_VERSION: ${DOCKER_VERSION}
+        DOCKER_COMPOSE_VERSION: ${DOCKER_COMPOSE_VERSION}
 
   kubectl_aws_cli:
     image: nyulibraries/kubectl_aws_cli
