@@ -1,14 +1,13 @@
-FROM nginx:1.15.4-alpine
+FROM nginx:1.15.5-alpine
 
 # chown necessary files
 RUN touch /var/run/nginx.pid \
   && chown -R nginx:nginx /var/run/nginx.pid \
   && chown -R nginx:nginx /var/cache/nginx
 
-# default to port 8080, remove user conf, default to stdout error logs
-RUN sed -i s/80\;/8080\;/g /etc/nginx/conf.d/default.conf \
-  && sed -i s/user\ *nginx\;//g /etc/nginx/nginx.conf \
-  && sed -i 's=/var/log/nginx/error\.log\ warn;=/dev/stdout\ info;=g' /etc/nginx/nginx.conf
+# use configs that default to 8080 and output error logs to stdout
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
 # security scan
 ARG AQUA_MICROSCANNER_TOKEN

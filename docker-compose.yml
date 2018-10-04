@@ -15,7 +15,7 @@ services:
     build: kubectl_aws_cli/
 
   nginx:
-    image: nyulibraries/nginx:1.15.4-alpine
+    image: nyulibraries/nginx:1.15.5-alpine
     build:
       context: nginx/
       args:
