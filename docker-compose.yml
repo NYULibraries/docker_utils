@@ -3,14 +3,14 @@ services:
 
   # Example build command: DOCKER_VERSION=18.06.1-ce-git DOCKER_COMPOSE_VERSION=1.22.0 docker-compose build circleci_docker
   circleci_docker:
-    image: nyulibraries/circleci_docker:${DOCKER_VERSION}-compose-${DOCKER_COMPOSE_VERSION}-1
+    image: nyulibraries/circleci_docker:${DOCKER_VERSION}-dc-${DOCKER_COMPOSE_VERSION}-1
     build:
       context: circleci_docker/
       args:
         DOCKER_VERSION: ${DOCKER_VERSION}
         DOCKER_COMPOSE_VERSION: ${DOCKER_COMPOSE_VERSION}
 
-  elasticsearch_curator: 
+  elasticsearch_curator:
     image: nyulibraries/elasticsearch_curator:5.5.4
     build: elasticsearch_curator/
 
