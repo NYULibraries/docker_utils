@@ -10,9 +10,20 @@ services:
         DOCKER_VERSION: ${DOCKER_VERSION}
         DOCKER_COMPOSE_VERSION: ${DOCKER_COMPOSE_VERSION}
 
+  elasticsearch_curator: 
+    image: nyulibraries/elasticsearch_curator:5.5.4
+    build: elasticsearch_curator/
+
   kubectl_aws_cli:
     image: nyulibraries/kubectl_aws_cli
     build: kubectl_aws_cli/
+
+  nginx:
+    image: nyulibraries/nginx:1.15.5-alpine
+    build:
+      context: nginx/
+      args:
+      - AQUA_MICROSCANNER_TOKEN
 
   wget:
     image: nyulibraries/wget:latest
