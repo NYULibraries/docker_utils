@@ -3,7 +3,7 @@ services:
 
   # Example build command: DOCKER_VERSION=18.06.1 DOCKER_COMPOSE_VERSION=1.22.0 PATCH=1 docker-compose build circleci_docker
   circleci_docker:
-    image: nyulibraries/circleci_docker:${DOCKER_VERSION}-dc-${DOCKER_COMPOSE_VERSION}-${PATCH:-0}
+    image: quay.io/nyulibraries/circleci_docker:${DOCKER_VERSION}-dc-${DOCKER_COMPOSE_VERSION}-${PATCH:-0}
     build:
       context: circleci_docker/
       args:
