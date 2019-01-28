@@ -18,13 +18,6 @@ services:
     image: nyulibraries/kubectl_aws_cli
     build: kubectl_aws_cli/
 
-  nginx:
-    image: nyulibraries/nginx:1.15.5-alpine
-    build:
-      context: nginx/
-      args:
-      - AQUA_MICROSCANNER_TOKEN
-
   wget:
     image: nyulibraries/wget:latest
     build: wget/
