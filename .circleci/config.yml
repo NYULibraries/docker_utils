@@ -1,0 +1,38 @@
+# Aliases
+docker-defaults: &docker-defaults
+  docker:
+    - image: quay.io/nyulibraries/circleci_docker:18.06.3-dc-1.23.2-0
+  working_directory: ~/app
+
+auth_quay: &auth_quay
+  run:
+    name: Docker login
+    command: docker login quay.io -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD"
+
+push_docker: &push_docker
+  run:
+    name: Build and push docker
+    command: |
+      docker-compose build ${REPO}
+      docker tag ${REPO} quay.io/nyulibraries/${REPO}:${TAG}
+      docker push quay.io/nyulibraries/${REPO}:${TAG}
+
+version: 2
+jobs:
+  build-and-push-circleci_docker:
+    <<: *docker-defaults
+    environment:
+      REPO: circleci_docker
+      TAG: 18.06.1-dc-1.23.2-0
+      DOCKER_VERSION: '18.06.1'
+      DOCKER_COMPOSE_VERSION: '1.23.2'
+      PATCH: '0'
+    steps:
+    - <<: *auth_quay
+    - <<: *push_docker
+
+workflows:
+  version: 2
+  build-and-push-images:
+    jobs:
+    - build-and-push-circleci_docker
