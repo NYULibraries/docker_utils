@@ -28,6 +28,8 @@ jobs:
       DOCKER_COMPOSE_VERSION: '1.23.2'
       PATCH: '0'
     steps:
+    - checkout
+    - setup_remote_docker
     - <<: *auth_quay
     - <<: *push_docker
 
