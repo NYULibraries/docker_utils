@@ -35,13 +35,14 @@ jobs:
 
 workflows:
   version: 2
-  build-and-push-images-daily:
+  build-and-push:
     jobs:
     - build-and-push-circleci_docker:
-        branches:
-          only:
-            - master
-
+        filters:
+          branches:
+            only:
+              - master
+  build-and-push-images-daily:
     triggers:
     - schedule:
         cron: "0 2 * * *"
