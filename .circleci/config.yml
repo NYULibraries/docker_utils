@@ -37,7 +37,11 @@ workflows:
   version: 2
   build-and-push-images-daily:
     jobs:
-    - build-and-push-circleci_docker
+    - build-and-push-circleci_docker:
+        branches:
+          only:
+            - master
+
     triggers:
     - schedule:
         cron: "0 2 * * *"
