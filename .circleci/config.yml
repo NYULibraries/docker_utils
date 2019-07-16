@@ -43,6 +43,8 @@ workflows:
             only:
               - master
   build-and-push-images-daily:
+    jobs:
+    - build-and-push-circleci_docker
     triggers:
     - schedule:
         cron: "0 2 * * *"
