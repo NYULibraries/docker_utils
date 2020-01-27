@@ -17,3 +17,7 @@ Just an alpine image with wget, inspired by [appropriate/curl](https://github.co
 ## Stress
 
 Fedora image with stress and some system utilities installed for stress testing and monitoring resource usage in clusters
+
+## Elasticsearch Curator
+
+Alpine image with elasticsearch curator, a utility for rotating old elasticsearch records (part of EFK stack)
