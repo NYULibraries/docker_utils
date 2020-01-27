@@ -10,10 +10,10 @@ Built on docker's docker image, we install some dependencies we typically use in
 
 Alpine image with kubectl and aws cli installed
 
-## Nginx
-
-Alpine nginx image running as non-root and defaulting to 8080.
-
 ## Wget
 
 Just an alpine image with wget, inspired by [appropriate/curl](https://github.com/appropriate/docker-curl).
+
+## Stress
+
+Fedora image with stress and some system utilities installed for stress testing and monitoring resource usage in clusters
